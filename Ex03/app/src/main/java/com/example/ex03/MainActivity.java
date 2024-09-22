@@ -64,6 +64,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        btnnhan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int a = Integer.parseInt("0" + edt1.getText());
+//                int b = Integer.parseInt("0" + edt2.getText());
+//
+//                edt3.setText("a * b = " + (a * b));
+//            }
+//        });
+
         btnchia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
