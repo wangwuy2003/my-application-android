@@ -32,6 +32,26 @@ public class MainActivity extends AppCompatActivity {
         btnCel = findViewById(R.id.btnCel);
         btnFah = findViewById(R.id.btnFah);
         btnClear = findViewById(R.id.btnClear);
-        
+        btnCel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DecimalFormat dcf = new DecimalFormat("#.00");
+
+                String doC = edtdoC.getText()+ "";
+                int C = Integer.parseInt(doC);
+                edtdoF.setText("" + dcf.format(C*1.8+32));
+            }
+        });
+
+        btnFah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DecimalFormat dcf = new DecimalFormat("#.00");
+
+                String doF = edtdoF.getText()+ "";
+                int F = Integer.parseInt(doF);
+                edtdoC.setText("" + dcf.format((F - 32)/1.8));
+            }
+        });
     }
 }
