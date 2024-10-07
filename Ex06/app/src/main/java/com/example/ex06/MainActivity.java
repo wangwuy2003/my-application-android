@@ -1,5 +1,7 @@
 package com.example.ex06;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -63,7 +66,74 @@ public class MainActivity extends AppCompatActivity {
         String cmnd = editCMND.getText().toString();
         cmnd = cmnd.trim();
         if (cmnd.length() != 9) {
-            editCMND.
+            editCMND.requestFocus();
+            editCMND.selectAll();
+            Toast.makeText(this, "CMND phải đúng 9 ký tự", Toast.LENGTH_LONG).show();
+            return;
         }
+
+        //kiem tra bang cap
+        String bang = "";
+        group = findViewById(R.id.group);
+        int id = group.getCheckedRadioButtonId();
+        if (id == -1) {
+            Toast.makeText(this, "Phải chọn bằng cấp", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        RadioButton rad = findViewById(id);
+        bang = rad.getText()+"";
+
+        //kiem tra so thich
+        String sothich = "";
+        if (chkdocbao.isChecked())
+            sothich += chkdocbao.getText() + "\n";
+        if (chkdocsach.isChecked())
+            sothich += chkdocsach.getText() + "\n";
+        if (chkdoccoding.isChecked())
+            sothich += chkdoccoding.getText() + "\n";
+
+        String bosung = editBosung.getText()+"";
+
+        //Tao dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Thông tin cá nhân");
+        builder.setPositiveButton("Đóng", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        String msg = ten + "\n";
+        msg += cmnd + "\n";
+        msg += bang + "\n";
+        msg += sothich;
+        msg += "----------------\n";
+        msg += "Thông tin bổ sung: \n";
+        msg += bosung +  "\n";
+        msg += "----------------\n";
+        builder.setMessage(msg);
+        builder.create().show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder b = new AlertDialog.Builder(MainActivity.this);
+        b.setTitle("Question");
+        b.setMessage("Are you sure you want to exit?");
+//        b.setIcon(R.drawable.inform)
+        b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        b.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.cancel();
+            }
+        });
+        b.create().show();
     }
 }
