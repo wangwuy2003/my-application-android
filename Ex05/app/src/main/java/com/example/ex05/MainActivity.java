@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     EditText editnamduonglich;
+    EditText editnamamlich;
     Button button1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,45 +29,87 @@ public class MainActivity extends AppCompatActivity {
 
         button1 = findViewById(R.id.button1);
         editnamduonglich = findViewById(R.id.editnamduonglich);
+        editnamamlich = findViewById(R.id.editnamamlich);
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String namduonglich = editnamduonglich.getText()+"";
                 int namduong = Integer.parseInt(namduonglich);
 
-                String can, chi;
+                String can = "", chi = "";
                 switch (namduong%10) {
                     case 0:
-                        System.out.println("Canh");
+                        can = "Canh ";
                         break;
                     case 1:
-                        System.out.println("Tân");
+                        can = "Tân ";
                         break;
                     case 2:
-                        System.out.println("Nhâm");
+                        can = "Nhâm ";
                         break;
                     case 3:
-                        System.out.println("Quý");
+                        can = "Quý ";
                         break;
                     case 4:
-                        System.out.println("");
+                        can = "Giáp ";
                         break;
                     case 5:
-                        System.out.println("Canh");
+                        can = "Ất ";
                         break;
                     case 6:
-                        System.out.println("Canh");
+                        can = "Bính ";
                         break;
                     case 7:
-                        System.out.println("Canh");
+                        can = "Đinh ";
                         break;
                     case 8:
-                        System.out.println("Canh");
+                        can = "Mậu ";
                         break;
                     case 9:
-                        System.out.println("Canh");
+                        can = "Kỷ ";
                         break;
                 }
+
+                switch (namduong%12) {
+                    case 0:
+                        chi = "Thân";
+                        break;
+                    case 1:
+                        chi = "Dậu";
+                        break;
+                    case 2:
+                        chi = "Tuất";
+                        break;
+                    case 3:
+                        chi = "Hợi";
+                        break;
+                    case 4:
+                        chi = "Tý";
+                        break;
+                    case 5:
+                        chi = "Sửu";
+                        break;
+                    case 6:
+                        chi = "Dần";
+                        break;
+                    case 7:
+                        chi = "Mão";
+                        break;
+                    case 8:
+                        chi = "Thìn";
+                        break;
+                    case 9:
+                        chi = "Tỵ";
+                        break;
+                    case 10:
+                        chi = "Ngọ";
+                        break;
+                    case 11:
+                        chi = "Mùi";
+                        break;
+                }
+                editnamamlich.setText(can + chi);
             }
         });
     }
