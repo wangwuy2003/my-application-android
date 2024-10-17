@@ -33,9 +33,9 @@ public class CallPhoneActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + edtcall.getText().toString()));
 
-                if(ActivityCompat.checkSelfPermission(CallPhoneActivity.this, Manifest.permission.CALL_PHONE)
+                if(ActivityCompat.checkSelfPermission(CallPhoneActivity.this, android.Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(CallPhoneActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+                    ActivityCompat.requestPermissions(CallPhoneActivity.this, new String[]{android.Manifest.permission.CALL_PHONE}, 1);
                     return;
                 }
                 startActivity(callIntent);
