@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         selection = findViewById(R.id.selection);
         final String arr1[]  = {"Iphone 7", "Iphone 8", "Iphone X", "Iphone 11", "Iphone 12"};
 
