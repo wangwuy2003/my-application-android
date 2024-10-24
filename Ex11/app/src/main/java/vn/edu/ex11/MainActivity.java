@@ -24,6 +24,12 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         edt = findViewById(R.id.edt);
 
-        
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://" + edt.getText().toString()));
+                startActivity(intent);
+            }
+        });
     }
 }
